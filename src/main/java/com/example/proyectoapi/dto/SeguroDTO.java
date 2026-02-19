@@ -14,5 +14,5 @@ public class SeguroDTO {
     private Long numeroPoliza;
     private String compania;
     private Date fechaExpiracion;
-    private VehiculoSeguroDTO vehiculo;
+    private VehiculoDTOParaSeguro vehiculo;
 }

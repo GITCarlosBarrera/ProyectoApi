@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehiculoDTO {
-    private Long idVehiculo;
+public class VehiculoDTOParaSeguro {
     private String matricula;
     private String modelo;
-    private EmpresaDTO empresa;
-    private SeguroDTOParaVehiculo seguro;
 }
