@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class SeguroDTO {
     private Long id;
-    private Long numeroPoliza;
+    private String numeroPoliza;
     private String compania;
     private Date fechaExpiracion;
     private VehiculoDTOParaSeguro vehiculo;

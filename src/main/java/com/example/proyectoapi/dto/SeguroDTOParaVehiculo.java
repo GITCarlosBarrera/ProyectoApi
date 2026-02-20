@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SeguroDTOParaVehiculo {
-    private Long numeroPoliza;
+    private String numeroPoliza;
     private String compania;
 }

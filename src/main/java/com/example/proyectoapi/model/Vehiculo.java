@@ -25,4 +25,11 @@ public class Vehiculo {
 
     @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, orphanRemoval = true)
     private Seguro seguro;
+
+    public void setSeguro(Seguro seguro) {
+        this.seguro = seguro;
+        if (this.seguro != null) {
+            this.seguro.setVehiculo(this);
+        }
+    }
 }

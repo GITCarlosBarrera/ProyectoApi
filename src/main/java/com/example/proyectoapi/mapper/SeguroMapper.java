@@ -2,6 +2,8 @@ package com.example.proyectoapi.mapper;
 
 import com.example.proyectoapi.dto.SeguroDTO;
 import com.example.proyectoapi.dto.SeguroDTOParaVehiculo;
+import com.example.proyectoapi.dto.VehiculoDTOParaSeguro;
+import com.example.proyectoapi.dto.create.SeguroCreateDTO;
 import com.example.proyectoapi.model.Seguro;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class SeguroMapper {
-    private final VehiculoMapper vehiculoMapper;
 
     public SeguroDTO toDto(Seguro seguro) {
         if (seguro == null) return null;
@@ -19,7 +20,14 @@ public class SeguroMapper {
         dto.setNumeroPoliza(seguro.getNumeroPoliza());
         dto.setCompania(seguro.getCompania());
         dto.setFechaExpiracion(seguro.getFechaExpiracion());
-        dto.setVehiculo(vehiculoMapper.toDtoSeguro(seguro.getVehiculo()));
+
+        // Se inserta de forma manual aquí para romper la dependencia circular con VehiculoMapper
+        if (seguro.getVehiculo() != null) {
+            VehiculoDTOParaSeguro vDto = new VehiculoDTOParaSeguro();
+            vDto.setMatricula(seguro.getVehiculo().getMatricula());
+            vDto.setModelo(seguro.getVehiculo().getModelo());
+            dto.setVehiculo(vDto);
+        }
 
         return dto;
     }
@@ -32,5 +40,16 @@ public class SeguroMapper {
         dto.setCompania(seguro.getCompania());
 
         return dto;
+    }
+
+    public Seguro toEntity(SeguroCreateDTO dto) {
+        if (dto == null) return null;
+
+        Seguro seguro = new Seguro();
+        seguro.setNumeroPoliza(dto.getNumeroPoliza());
+        seguro.setCompania(dto.getCompania());
+        seguro.setFechaExpiracion(dto.getFechaExpiracion());
+
+        return seguro;
     }
 }

@@ -17,7 +17,7 @@ public class Seguro {
     private Long idSeguro;
 
     @Column(name = "numero_poliza", unique = true, nullable = false)
-    private Long numeroPoliza;
+    private String numeroPoliza;
 
     private String compania;
 
