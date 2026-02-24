@@ -35,10 +35,16 @@ public class VehiculoRepositoryContainersTest {
 
     @Test
     public void eliminarVehiculo_DebeEliminarSeguroEnCascada() {
+        Empresa empresa = new Empresa();
+        empresa.setNombre("Empresa de Prueba");
+        empresa.setCif("12345678Z");
+
+        entityManager.persist(empresa);
+
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setMatricula("1234-ABC");
         vehiculo.setModelo("Modelo Ejemplo");
-        vehiculo.setEmpresa(new Empresa());
+        vehiculo.setEmpresa(empresa);
 
         Seguro seguro = new Seguro();
         seguro.setCompania("Compañia Ejemplo");
