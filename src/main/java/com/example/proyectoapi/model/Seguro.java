@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -23,7 +24,7 @@ public class Seguro {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_expiracion")
-    private Date fechaExpiracion;
+    private LocalDate fechaExpiracion;
 
     @OneToOne
     @JoinColumn(name = "id_vehiculo", unique = true)

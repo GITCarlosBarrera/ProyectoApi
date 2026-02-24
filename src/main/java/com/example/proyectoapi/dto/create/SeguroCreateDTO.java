@@ -1,11 +1,13 @@
 package com.example.proyectoapi.dto.create;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -18,5 +20,6 @@ public class SeguroCreateDTO {
 
     @NotNull(message = "La fecha de expiración no puede estar vacía")
     @Future(message = "La fecha de expiración no puede ser anterior a la fecha actual")
-    private Date fechaExpiracion;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaExpiracion;
 }
